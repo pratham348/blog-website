@@ -1,9 +1,9 @@
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
-const { secretKey } = require("../../config/config")
-const User = require("../models/user")
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import { secretKey } from "../../config/config.js"
+import User from "../models/user.js"
 
-const signup = async (req, res) => {
+export const signup = async (req, res) => {
  try {
   const { email, password } = req.body
   const existingUser = await User.findOne({ email })
@@ -21,7 +21,7 @@ const signup = async (req, res) => {
  }
 }
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
  try {
   const { email, password } = req.body
   const user = await User.findOne({ email })
@@ -42,7 +42,7 @@ const login = async (req, res) => {
  }
 }
 
-const adminLogin = async (req, res) => {
+export const adminLogin = async (req, res) => {
  try {
   const { email, password } = req.body
   const user = await User.findOne({ email })
@@ -65,10 +65,4 @@ const adminLogin = async (req, res) => {
    .status(500)
    .json({ error: "Error while logging in.", details: error.message })
  }
-}
-
-module.exports = {
- signup,
- login,
- adminLogin
 }

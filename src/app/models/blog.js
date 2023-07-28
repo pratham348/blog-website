@@ -1,11 +1,10 @@
 // app/models/user.js
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 
 const blogSchema = new mongoose.Schema({
  title: {
   type: String,
-  required: true,
-  unique: true
+  required: true
  },
  slug: {
   type: String,
@@ -14,8 +13,7 @@ const blogSchema = new mongoose.Schema({
  },
  category: {
   type: String,
-  required: true,
-  unique: true
+  required: true
  },
  description: {
   type: String,
@@ -23,19 +21,16 @@ const blogSchema = new mongoose.Schema({
  },
  publishDate: {
   type: String,
-  required: true,
-  unique: true
+  required: true
  },
  thumbnail: {
-  type: String,
-  required: true
+  type: String
  },
  image: {
-  type: String,
-  required: true
+  type: String
  }
 })
 
 const Blog = mongoose.model("Blog", blogSchema)
 
-module.exports = Blog
+export default Blog

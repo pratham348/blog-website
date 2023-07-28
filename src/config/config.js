@@ -1,3 +1,1 @@
-module.exports = {
- secretKey: "my-jwt-secret-123"
-}
+export const secretKey = "my-jwt-secret-123"

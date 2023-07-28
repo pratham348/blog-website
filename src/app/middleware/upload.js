@@ -1,5 +1,5 @@
-const multer = require("multer")
-const path = require("path")
+import multer from "multer"
+import path from "path"
 
 // Set up storage for uploaded files
 // Multer configuration for file uploads
@@ -15,4 +15,4 @@ const storage = multer.diskStorage({
 // Create the multer instance
 const upload = multer({ storage: storage })
 
-module.exports = upload
+export default upload
