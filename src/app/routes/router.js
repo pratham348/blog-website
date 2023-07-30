@@ -37,7 +37,7 @@ router.delete("/blog/:id", deleteBlog)
 //View routes
 router.get("/", (req, res) => {
  console.log("called")
- res.render("pages/dashboard")
+ res.render("pages/login")
 })
 
 export default router
