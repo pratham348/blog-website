@@ -16,8 +16,8 @@ const upload = multer()
 const app = express()
 const PORT = process.env.PORT || 5000
 const __filename = fileURLToPath(import.meta.url)
-
 const __dirname = path.dirname(__filename)
+const publicFolderPath = path.resolve(__dirname, "../public")
 
 // Middleware
 app.use(upload.array())
@@ -29,15 +29,14 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // Connect to MongoDB
 connectDB()
-app.use(express.static(path.resolve(__dirname + "/public")))
-// app.use(express.static(__dirname + "/views"))
-// app.use(express.static(path.join(__dirname, "public")))
 
 app.set("view engine", "ejs")
 // app.set("views", "views")
 app.set("views", __dirname + "/views")
+
+app.use(express.static(publicFolderPath))
 // Routes
 app.use("/api", router)
 
 // Start the server
-app.listen(PORT, () => {})
+app.listen(PORT, () => console.log(`Server starts on port ${PORT}`))
